@@ -22,3 +22,9 @@ It interprets the requests and fetches the appropriate content, delivering it ba
 - Nginx
 - Apache
 
+
+## What is Internet Information Services (IIS)?
+
+**IIS** is a **web server software** developed by Microsoft to host and serve websites and applications on the Windows operating system. It supports multiple protocols such as HTTP, HTTPS, FTP, and more. **IIS** is well-suited for hosting ASP.NET and .NET Core applications, and it also supports other web technologies through additional configurations.
+
+
