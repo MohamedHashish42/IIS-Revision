@@ -87,11 +87,56 @@ In summary, in IIS:
 - Every application is a virtual directory.
 - However, not every virtual directory is configured as an application.
 
-### 4. **Application Pool Isolation**
+### 4. **Application Pool**
 - Application Pool is a mechanism that allows you to isolate your web applications for better security, reliability, and performance.  
-- Each application in IIS can be assigned to a separate **Application Pool**. This provides process isolation, meaning each application runs in its own worker process, which means that if one application crashes, it won't affect the others running in different application pools.
+- Each application in IIS can be assigned to a separate **Application Pool**. This provides process **isolation**, meaning each application runs in its own worker process, which means that if one application crashes, it won't affect the others running in different application pools.
+
+#### **Application Pool Identity**
+
+- The identity of an application pool is the user account under which its worker processes run. This account determines what permissions the application pool has on the server, such as access to files, directories, and other system resources.
+- Default identity is typically `ApplicationPoolIdentity`, a built-in, virtual user account that IIS automatically creates and manages for each application pool
+- Custom identities can be used if the application needs specific permissions.
+
 
 #### **Benefits of Application Pools**
   - **Security:** If one application crashes, it doesn’t affect others.
   - **Resource Management:** Each application can have different settings for memory, CPU, and other resources.
 
+
+### 5. **wwwroot Folder**
+The **wwwroot** folder is the default directory in IIS where your website's files (HTML, CSS, JavaScript, images, etc.) are stored. It serves as the root directory for your website's content:
+
+**Location**: By default, it's located at `C:\inetpub\wwwroot`.  
+**Purpose:** The folder is accessible by the web server and defines the document root for your IIS-hosted website. All files and subdirectories within "wwwroot" are publicly accessible by default unless restricted by permissions or settings.
+
+**Note**  
+If you want to use another folder you will need Ensure the IIS user account has appropriate permissions to access the folder. You might need to give the `IIS_IUSERS` group Read and Execute permissions as the following :
+   - Right-click on the `D:\MyWebsite` folder and select **Properties**.
+   - Go to the **Security** tab and click on **Edit** to change permissions.
+   - Click **Add** and type `IIS_IUSRS` into the object name box, then click **Check Names** and **OK**.
+   - Select `IIS_IUSRS` from the list and check the box for **Read & execute** and **Read** permissions.
+   - Click **Apply** and **OK**.
+
+
+### 6. **URL Rewrite**
+
+**URL Rewrite** module in IIS allows you to modify incoming request URLs based on specific rules, potentially routing them to different applications.  
+**Example**
+[URL Rewrite Example](./Examples/URL-Rewrite-Example.md)
+
+### 7. **Default Document:**
+ 
+In IIS (Internet Information Services), the **Default Document** is the file that the server automatically loads when someone visits a website without specifying a specific page. For example, if someone goes to `www.example.com`, the server will look for a default document, like `index.html` or `default.aspx`, and display that page.
+<div align="Center">
+
+  ![Default-Document](./Images/Default-Document.PNG)
+  
+</div>
+
+
+#### **Here’s how it works**
+
+- **Order of Documents**: IIS checks a list of default documents in a specific order. If it finds one of these files in the website’s root folder, it serves that file.
+- **Customizable**: You can change the order or add/remove files in this list. For example, if you want `home.html` to be the first page loaded, you can add it to the list and move it to the top.
+
+So, the **Default Document** setting ensures that visitors see a webpage even if they don’t specify a file name in the URL.
