@@ -1,8 +1,3 @@
-
-
-
-
-
 <h2 dir="rtl" align="center">
 بسم الله الرحمن الرحيم
 </h2>
@@ -225,4 +220,9 @@ DNS is like the phonebook of the internet. It translates human-friendly domain n
 2. **Request to Web Server:** The browser sends the request directly to the web server at the specified IP address.
 3. **IIS Request Routing:** IIS receives the request and directs it to the appropriate application based on the IP address and port number.
 4. **Server Response:** The web server processes the request, possibly interacting with backend services, databases, etc., and then sends the appropriate response back to the client.
+
+
+## IIS Commands
+Here is the essential commands for managing IIS on a web server directly through the Command Prompt.  
+[IIS-Commands](IIS-Commands.md)
 
