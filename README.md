@@ -17,7 +17,7 @@ Before learning **What is IIS**, we need to understand **What is a Web Server**.
 A web server is a specialized software that handles HTTP requests from clients (usually web browsers) and serves them web pages or resources.   
 It interprets the requests and fetches the appropriate content, delivering it back to the client.
 
-### Examples:
+**Examples:**:
 - Microsoft’s IIS
 - Nginx
 - Apache
@@ -65,7 +65,7 @@ Each site is distinguished by **one or more Unique bindings**.
 One thing to note is that while these guidelines are generally good practice, the actual implementation can vary depending on the specific environment, operating system, and network configuration. For example, some systems might use slightly different port ranges for dynamic allocation.
 Also, it's worth mentioning that for public-facing web applications, it's common to use standard HTTP (80) or HTTPS (443) ports.
 
-## 2. **Virtual Directories**
+## Virtual Directories
 Virtual directories are used within IIS to create a logical directory structure under a site. These directories can point to different physical paths on the server or even different servers.
 
 **Example**   
@@ -136,7 +136,7 @@ If you want to use another folder you will need Ensure the IIS user account has 
 ## URL Rewrite
 
 **URL Rewrite** module in IIS allows you to modify incoming request URLs based on specific rules, potentially routing them to different applications.
-  
+
 **Example**
 [URL Rewrite Example](./Examples/URL-Rewrite-Example.md)
 
@@ -156,3 +156,73 @@ In IIS (Internet Information Services), the **Default Document** is the file tha
 - **Customizable**: You can change the order or add/remove files in this list. For example, if you want `home.html` to be the first page loaded, you can add it to the list and move it to the top.
 
 So, the **Default Document** setting ensures that visitors see a webpage even if they don’t specify a file name in the URL.
+
+
+## How IIS Handel Requests to Hosted Applications
+
+To understand we need to first to Know the following
+- What are Internal IP and External IP
+- What is Domain Name System (DNS)
+
+
+### What are Internal IP and External IP
+
+#### **Internal IP**   
+Also known as a private IP, this address is used within a private network (such as a home or business network). These addresses are not directly accessible from the internet.
+
+Devices within this network communicate using internal IP addresses but cannot access the internet directly.
+
+To enable devices with **private IP** addresses to access the internet, **Network Address Translation (NAT)** is used. NAT translates the private IP addresses into a **public IP** address for use on the internet. When an external server sends a response, NAT translates it back to the appropriate **private IP** address within the network.
+
+To know your **Internal IP** use the following command
+  ```cmd
+  ipconfig
+  ```
+  Then look for the section labeled **Ethernet adapter** or **Wireless LAN adapter** (depending on whether you're connected via Ethernet or Wi-Fi). Your internal IP address will be listed under "IPv4 Address".
+
+
+#### **External IP**  
+Also known as a **public IP**, this address is assigned by an **Internet Service Provider (ISP)** and is accessible from anywhere on the internet. It allows devices on the internet to communicate with devices on the private network.
+
+To find your external (public) IP address, you can use any of the following methods:
+
+ 1. **Using a Web Browser:**
+   - Open your web browser and visit any of these websites:
+     - [WhatIsMyIP.com](https://www.whatismyip.com/)
+     - [IPinfo.io](https://ipinfo.io/)
+   - Your external IP address will be displayed at the top of the page.
+
+ 2. **Using Command Line Tools:**
+
+   - **Windows PowerShell:**
+     - Open **PowerShell** and type the following command:
+       ```powershell
+       (Invoke-WebRequest -Uri "https://api.ipify.org").Content
+       ```
+
+### What is Domain Name System (DNS)
+DNS is like the phonebook of the internet. It translates human-friendly domain names (like `www.example.com`) into IP addresses (like `192.168.1.1`) that computers use to identify each other on the network.
+
+#### How DNS Works 
+- When a user enters a domain name in their browser, a DNS server resolves it to the appropriate IP address, which then allows the client to connect to the web server hosting that domain.
+
+- DNS usually resolves to an **external IP** address for web traffic, **internal IP** addresses come into play when routing traffic within a private network.  
+
+### How IIS Handel Requests to Hosted Applications
+
+#### **With Domain:**
+
+1. **User Enters URL:** The user enters a URL with a domain name into their web browser (e.g., `http://www.example.com`).
+2. **DNS Resolution:** The browser sends a request to the DNS to resolve the domain name to an IP address.
+3. **Request to Web Server:** Once the domain name is resolved to an IP address, the browser sends the request to the corresponding web server (e.g., IIS) using the obtained IP address.
+4. **IIS Request Routing:** IIS receives the request and uses the host header (the domain name) to determine which hosted application should handle the request.
+5. **Server Response:** The web server processes the request, possibly interacting with backend services, databases, etc., and then sends the appropriate response back to the client.
+
+
+#### **Without Domain:**
+
+1. **User Enters IP Address:** The user enters an IP address directly into their web browser (e.g., `http://192.168.1.1`).
+2. **Request to Web Server:** The browser sends the request directly to the web server at the specified IP address.
+3. **IIS Request Routing:** IIS receives the request and directs it to the appropriate application based on the IP address and port number.
+4. **Server Response:** The web server processes the request, possibly interacting with backend services, databases, etc., and then sends the appropriate response back to the client.
+
