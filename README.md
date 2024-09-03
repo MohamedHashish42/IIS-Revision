@@ -226,3 +226,8 @@ DNS is like the phonebook of the internet. It translates human-friendly domain n
 Here is the essential commands for managing IIS on a web server directly through the Command Prompt.  
 [IIS-Commands](IIS-Commands.md)
 
+
+## IIS Installation
+[IIS-Installation](./IIS-Installation.md)
+
+
