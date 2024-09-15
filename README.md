@@ -233,6 +233,21 @@ Here is the essential commands for managing IIS on a web server directly through
 ## IIS Installation
 [IIS Installation](./IIS-Installation.md)
 
+## **Hands-On IIS**
+### Exercise 1  
+**Description:** Publish a simple website on IIS by placing the site's folder **in the wwwroot** directory within IIS.  
+**Solution:** [Exercise 1 Solution](./Examples/Hands-On-IIS/Exercise-1/Exercise-1-Solution.md)
+
+
+### Exercise 2  
+**Description:** Publish a simple website on IIS by placing the site's folder **out of wwwroot** directory within IIS.  
+**Solution:** [Exercise 2 Solution](./Examples/Hands-On-IIS/Exercise-2/Exercise-2-Solution.md)
+
+### Note
+Other Examples may added Soon
+
+
+
 
 
 
