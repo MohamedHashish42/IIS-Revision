@@ -247,6 +247,12 @@ Here is the essential commands for managing IIS on a web server directly through
 Other Examples may added Soon
 
 
+## References 
+This Revision based on the following 2 references:
+- [IIS - منحة ITI](https://www.youtube.com/playlist?list=PLesfn4TAj57UExLb-YFJ-J4yEOgRgyP_9)  
+- [Chat GPT](https://chatgpt.com/)
+
+
 
 
 
