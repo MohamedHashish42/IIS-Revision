@@ -221,13 +221,19 @@ DNS is like the phonebook of the internet. It translates human-friendly domain n
 3. **IIS Request Routing:** IIS receives the request and directs it to the appropriate application based on the IP address and port number.
 4. **Server Response:** The web server processes the request, possibly interacting with backend services, databases, etc., and then sends the appropriate response back to the client.
 
+## Configuring SQL Server Authentication For Application Deployment
+ [Configuring SQL Server Authentication For Application Deployment](Configuring-SQL-Server-Authentication-For-Application-Deployment.md)
+
 
 ## IIS Commands
 Here is the essential commands for managing IIS on a web server directly through the Command Prompt.  
-[IIS-Commands](IIS-Commands.md)
+[IIS Commands](IIS-Commands.md)
 
 
 ## IIS Installation
-[IIS-Installation](./IIS-Installation.md)
+[IIS Installation](./IIS-Installation.md)
+
+
+
 
 
