@@ -269,7 +269,7 @@ Here is the essential commands for managing IIS on a web server directly through
 
 ### Exercise 4  
 **Description:** Publishing a .NET Core Application on IIS.  
-**Solution:** [Exercise 4 Solution](./Examples/Hands-On-IIS/Exercise-3/Exercise-4-Solution.md)
+**Solution:** [Exercise 4 Solution](./Examples/Hands-On-IIS/Exercise-4/Exercise-4-Solution.md)
 
 
 ## References <a id="References"></a>
