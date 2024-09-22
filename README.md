@@ -263,8 +263,13 @@ Here is the essential commands for managing IIS on a web server directly through
 **Description:** Publish a simple website on IIS by placing the site's folder **out of wwwroot** directory within IIS.  
 **Solution:** [Exercise 2 Solution](./Examples/Hands-On-IIS/Exercise-2/Exercise-2-Solution.md)
 
-### Note
-Other Examples may added Soon
+### Exercise 3  
+**Description:** Publishing a .NET Framework Application on IIS.  
+**Solution:** [Exercise 3 Solution](./Examples/Hands-On-IIS/Exercise-3/Exercise-3-Solution.md)
+
+### Exercise 4  
+**Description:** Publishing a .NET Core Application on IIS.  
+**Solution:** [Exercise 4 Solution](./Examples/Hands-On-IIS/Exercise-3/Exercise-4-Solution.md)
 
 
 ## References <a id="References"></a>
