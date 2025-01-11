@@ -9,24 +9,24 @@ This revision is designed to provide a concise overview of **IIS**, including bo
 
 **Revision Content**  
 
-1. [What is the Web Server?](#WhatIsTheWebServer)
-2. [What is Internet Information Services (IIS)?](#WhatIsIIS)
-3. [Sites](#IISSites)
-4. [Virtual Directories](#VirtualDirectories)
-5. [Applications within a Site](#ApplicationsWithinSite)
-6. [Application Pool](#ApplicationPool)
-7. [IUSR and IIS_IUSRS](#IUSRAndIIS_IUSRS)
-8. [wwwroot Folder](#wwwrootFolder)
-9. [URL Rewrite](#URLRewrite)
-10. [Default Document](#DefaultDocument)
-11. [How IIS Handles Requests to Hosted Applications](#HowIISHandlesRequests)
-12. [Configuring SQL Server Authentication for Application Deployment](#SQLServerAuthentication)
-13. [IIS Commands](#IISCommands)
-14. [IIS Installation](#IISInstallation)
-15. [Hands-On IIS](#HandsOnIIS)  
-16. [References](#References)
+1. [What is the Web Server?](#what-is-the-web-server)
+2. [What is Internet Information Services (IIS)?](#what-is-internet-information-services-iis)
+3. [Sites](#sites)
+4. [Virtual Directories](#virtual-directories)
+5. [Applications within a Site](#applications-within-a-site)
+6. [Application Pool](#application-pool)
+7. [IUSR and IIS_IUSRS](#iusr-and-iis_iusrs)
+8. [wwwroot Folder](#wwwroot-folder)
+9. [URL Rewrite](#url-rewrite)
+10. [Default Document](#default-document)
+11. [How IIS Handles Requests to Hosted Applications](#how-iis-handles-requests-to-hosted-applications)
+12. [Configuring SQL Server Authentication for Application Deployment](#configuring-sql-server-authentication-for-application-deployment)
+13. [IIS Commands](#iis-commands)
+14. [IIS Installation](#iis-installation)
+15. [Hands-On IIS](#hands-on-iis)  
+16. [References](#references)
 
-## What is the Web Server?<a id="WhatIsTheWebServer"></a>
+## What is the Web Server?
 Before learning **What is IIS**, we need to understand **What is a Web Server**.
 
 A web server is a specialized software that handles HTTP requests from clients (usually web browsers) and serves them web pages or resources.   
@@ -38,13 +38,13 @@ It interprets the requests and fetches the appropriate content, delivering it ba
 - Apache
 
 
-## What is Internet Information Services (IIS)?<a id="WhatIsIIS"></a>
+## What is Internet Information Services (IIS)?
 
 **IIS** is a **web server software** developed by Microsoft to host and serve websites and applications on the Windows operating system. It supports multiple protocols such as HTTP, HTTPS, FTP, and more. **IIS** is well-suited for hosting ASP.NET and .NET Core applications, and it also supports other web technologies through additional configurations.
 
 
 
-## Sites <a id="IISSites"></a>
+## Sites 
 In IIS, a "site" is a top-level entity that can contain one or more web applications and virtual directories.   
 Each site is distinguished by **one or more Unique bindings**. 
 
@@ -80,14 +80,14 @@ Each site is distinguished by **one or more Unique bindings**.
 One thing to note is that while these guidelines are generally good practice, the actual implementation can vary depending on the specific environment, operating system, and network configuration. For example, some systems might use slightly different port ranges for dynamic allocation.
 Also, it's worth mentioning that for public-facing web applications, it's common to use standard HTTP (80) or HTTPS (443) ports.
 
-## Virtual Directories <a id="VirtualDirectories"></a>
+## Virtual Directories 
 Virtual directories are used within IIS to create a logical directory structure under a site. These directories can point to different physical paths on the server or even different servers.
 
 **Example**   
 If you create a virtual directory named `app1` under `www.example.com`, requests to `www.example.com/app1` will be routed to the corresponding application.
 
 
-## Applications within a Site <a id="ApplicationsWithinSite"></a>
+## Applications within a Site 
 - Applications is a collection of files and directories that works as a single web application.
 - it has its own application pool, configuration settings, and can run independently of other applications.
 - Each application within a site is associated with a unique **application path**, which is a virtual directory under the site's root URL for example:
@@ -102,7 +102,7 @@ In summary, in IIS:
 - Every application is a virtual directory.
 - However, not every virtual directory is configured as an application.
 
-## Application Pool <a id="ApplicationPool"></a>
+## Application Pool 
 - Application Pool is a mechanism that allows you to isolate your web applications for better security, reliability, and performance.  
 - Each application in IIS can be assigned to a separate **Application Pool**. This provides process **isolation**, meaning each application runs in its own worker process, which means that if one application crashes, it won't affect the others running in different application pools.
 
@@ -116,7 +116,8 @@ In summary, in IIS:
 ### Benefits of Application Pools
   - **Security:** If one application crashes, it doesn’t affect others.
   - **Resource Management:** Each application can have different settings for memory, CPU, and other resources.
-## IUSR and IIS_IUSRS <a id="IUSRAndIIS_IUSRS"></a>
+
+## IUSR and IIS_IUSRS 
 **IUSR** and **IIS_IUSRS** are specific accounts and groups used by IIS (Internet Information Services) to manage permissions and security contexts.
 
 ### 1. IUSR Account
@@ -133,7 +134,7 @@ In summary, in IIS:
 - **IUSR** is an account used for anonymous authentication, enabling anonymous access to web applications.
 - **IIS_IUSRS** is a group that encompasses all IIS-related accounts, particularly those used by application pools, to manage access rights and permissions efficiently.
 
-## wwwroot Folder <a id="wwwrootFolder"></a>
+## wwwroot Folder 
 The **wwwroot** folder is the default directory in IIS where your website's files (HTML, CSS, JavaScript, images, etc.) are stored. It serves as the root directory for your website's content:
 
 **Location**: By default, it's located at `C:\inetpub\wwwroot`.  
@@ -148,14 +149,14 @@ If you want to use another folder you will need Ensure the IIS user account has 
    - Click **Apply** and **OK**.
 
 
-## URL Rewrite <a id="URLRewrite"></a>
+## URL Rewrite 
 
 **URL Rewrite** module in IIS allows you to modify incoming request URLs based on specific rules, potentially routing them to different applications.
 
 **Example**
 [URL Rewrite Example](./Examples/URL-Rewrite-Example.md)
 
-## Default Document <a id="DefaultDocument"></a>
+## Default Document 
  
 In IIS (Internet Information Services), the **Default Document** is the file that the server automatically loads when someone visits a website without specifying a specific page. For example, if someone goes to `www.example.com`, the server will look for a default document, like `index.html` or `default.aspx`, and display that page.
 <div align="Center">
@@ -173,7 +174,7 @@ In IIS (Internet Information Services), the **Default Document** is the file tha
 So, the **Default Document** setting ensures that visitors see a webpage even if they don’t specify a file name in the URL.
 
 
-## How IIS Handles Requests to Hosted Applications  <a id="HowIISHandlesRequests"></a>
+## How IIS Handles Requests to Hosted Applications 
 
 To understand we need to first to Know the following
 - What are Internal IP and External IP
@@ -241,19 +242,19 @@ DNS is like the phonebook of the internet. It translates human-friendly domain n
 3. **IIS Request Routing:** IIS receives the request and directs it to the appropriate application based on the IP address and port number.
 4. **Server Response:** The web server processes the request, possibly interacting with backend services, databases, etc., and then sends the appropriate response back to the client.
 
-## Configuring SQL Server Authentication For Application Deployment <a id="SQLServerAuthentication"></a>
+## Configuring SQL Server Authentication For Application Deployment 
  [Configuring SQL Server Authentication For Application Deployment](Configuring-SQL-Server-Authentication-For-Application-Deployment.md)
 
 
-## IIS Commands <a id="IISCommands"></a>
+## IIS Commands 
 Here is the essential commands for managing IIS on a web server directly through the Command Prompt.  
 [IIS Commands](IIS-Commands.md)
 
 
-## IIS Installation  <a id="IISInstallation"></a>
+## IIS Installation  
 [IIS Installation](./IIS-Installation.md)
 
-## **Hands-On IIS** <a id="HandsOnIIS"></a>
+## **Hands-On IIS** 
 ### Exercise 1  
 **Description:** Publish a simple website on IIS by placing the site's folder **in the wwwroot** directory within IIS.  
 **Solution:** [Exercise 1 Solution](./Examples/Hands-On-IIS/Exercise-1/Exercise-1-Solution.md)
@@ -272,7 +273,7 @@ Here is the essential commands for managing IIS on a web server directly through
 **Solution:** [Exercise 4 Solution](./Examples/Hands-On-IIS/Exercise-4/Exercise-4-Solution.md)
 
 
-## References <a id="References"></a>
+## References 
 This Revision based on the following 2 references:
 - [IIS - منحة ITI](https://www.youtube.com/playlist?list=PLesfn4TAj57UExLb-YFJ-J4yEOgRgyP_9)  
 - [Chat GPT](https://chatgpt.com/)
